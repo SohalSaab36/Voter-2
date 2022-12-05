@@ -29,11 +29,12 @@ def vote():
          if ASK ==    "y":
              vote()
          elif ASK ==    "n":
-             print("logging not work on android 11 until permission btw ")
-             print(DB)
-             amritdb.chdir(f"{ROOT}/Log")
-             amritdb.TouchWrite(f"{time}.txt",str(DB))
-             exit()
+             try:
+                 amritdb.TouchWrite(f"{time}.txt",str(DB))
+                 exit()
+             except PermissionError:
+                  print("logging not work on android 11 until permission btw ")
+                  print(DB)
          else:
              vote()
  
